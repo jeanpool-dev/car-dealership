@@ -46,6 +46,12 @@ export class CarsService {
   }
 
   update(id: string, updateCarDto: UpdateCarDto) {
-    return updateCarDto;
+    const carDB = this.findOneById(id);
+
+    const index = this.cars.findIndex((car) => car.id === id);
+    const updatedCar = { ...carDB, ...updateCarDto, id } as Car;
+    this.cars[index] = updatedCar;
+
+    return updatedCar;
   }
 }
