@@ -7,4 +7,9 @@ export class CreateCarDto {
   @IsString()
   @MinLength(3, { message: 'Model must be at least 3 characters long' })
   readonly model: string;
+
+  constructor(brand: string, model: string) {
+    this.brand = brand;
+    this.model = model;
+  }
 }
